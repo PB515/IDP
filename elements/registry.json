@@ -34,13 +34,16 @@
     {
       "name": "horizontal-scroll",
       "version": "v1",
-      "status": "todo",
-      "summary": "Pinned horizontal scroll-painting / lookbook driven by vertical scroll.",
-      "recipe": "horizontal-scroll.md",
-      "source": { "project": "hingulapuran", "files": ["components/LegendScroll.tsx"] },
+      "status": "proven",
+      "summary": "A row of panels that scrolls sideways while pinned (vertical scroll -> horizontal travel). Deterministic aspect-ratio widths; reduced-motion stack.",
+      "recipe": "elements/horizontal-scroll/recipe.md",
+      "files": ["elements/horizontal-scroll/HorizontalScroll.tsx"],
+      "example": "elements/horizontal-scroll/example.config.ts",
+      "provenOn": "hingulapuran (history-of-Hingul cloth)",
       "deps": ["motion"],
-      "assetSlots": ["panels[] or one wide cloth image"],
-      "config": ["panels[]", "headings[]", "length (vh)"]
+      "assetSlots": ["panels[].src", "clothTexture?"],
+      "config": ["panels[]", "title?", "kicker?", "scrollCue?", "heightVh", "panelAspect", "panelHeight"],
+      "note": "Harvested 2026-06-19. Self-contained (react + motion). Track width from aspect-ratio (no cold-load bug); tune speed via heightVh."
     },
     {
       "name": "scene-reel-2.5d",
