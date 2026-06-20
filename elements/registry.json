@@ -19,14 +19,17 @@
     {
       "name": "preloader-gateway",
       "version": "v1",
-      "status": "todo",
-      "summary": "Cinematic entry: doors/curtain slide open on scroll or load to reveal the sanctum behind.",
-      "recipe": "preloader-gateway.md",
-      "source": { "project": "hingulapuran", "files": ["components/DoorHero.tsx"] },
+      "status": "proven",
+      "summary": "Cinematic entry: two door leaves part on scroll to reveal a backdrop scene + title. Layered-PNG parallax, reduced-motion safe.",
+      "recipe": "elements/preloader-gateway/recipe.md",
+      "files": ["elements/preloader-gateway/PreloaderGateway.tsx"],
+      "example": "elements/preloader-gateway/example.config.ts",
+      "provenOn": "hingulapuran (temple-door hero)",
       "altSource": { "project": "desi-maximalism", "note": "temple-door gateway variant" },
       "deps": ["motion"],
-      "assetSlots": ["leftDoor", "rightDoor", "backdrop/sanctum"],
-      "config": ["title", "trigger (scroll|load)"]
+      "assetSlots": ["backdrop{d,m}", "leaf{d,m} (mirrored)", "toran?"],
+      "config": ["title", "subtitle?", "toran?", "scrollCue?", "openAt", "heightVh"],
+      "note": "Harvested 2026-06-19. Self-contained (react + motion only). Title is static behind the doors — never scroll-opacity it."
     },
     {
       "name": "horizontal-scroll",
