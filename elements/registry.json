@@ -68,14 +68,15 @@
     {
       "name": "r3f-3d-hero",
       "version": "v1",
-      "status": "todo",
-      "summary": "React-Three-Fiber 3D hero object with mouse-driven camera (e.g. neural core / orbital rings).",
-      "recipe": "r3f-3d-hero.md",
-      "source": { "project": "command-center-os", "files": ["the 3D feature / neural core"] },
-      "altSource": { "project": "bugadi-showpage", "note": "flagship-tier 3D hero piece" },
-      "deps": ["three", "@react-three/fiber", "@react-three/drei"],
-      "assetSlots": ["model/geometry params"],
-      "config": ["object type", "colors (tokens)", "camera sensitivity"]
+      "status": "proven",
+      "summary": "R3F neural core — wireframe icosahedron + 2 orbital rings + particle halo, optional pointer-cam. Perf-safe wrapper (lazy ssr:false + IntersectionObserver + weak-device fallback). Colours via props.",
+      "recipe": "elements/r3f-3d-hero/recipe.md",
+      "files": ["elements/r3f-3d-hero/Core3D.tsx", "elements/r3f-3d-hero/CoreScene.tsx", "elements/r3f-3d-hero/core-config.ts"],
+      "provenOn": "command-center-os (3D Feature core; build-verified)",
+      "altSource": { "project": "bugadi-showpage", "note": "flagship-tier 3D hero variant" },
+      "deps": ["three", "@react-three/fiber", "@react-three/drei", "motion"],
+      "config": ["pointerCam", "colors (CoreColors hex)", "particleCount"],
+      "note": "Harvested 2026-06-19; colours generalized to props, build-verified on command-center. v2 for different geometry."
     },
     {
       "name": "material-shader",
