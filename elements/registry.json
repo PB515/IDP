@@ -142,12 +142,15 @@
     {
       "name": "page-transition-morph",
       "version": "v1",
-      "status": "todo",
-      "summary": "Route transitions with shared-element morph between pages.",
-      "recipe": "shared-element-morph.md",
-      "source": { "project": "photographer-portfolio", "files": ["brutalist portfolio route transitions"] },
-      "altRecipe": "page-transitions.md",
-      "deps": ["motion"]
+      "status": "proven",
+      "summary": "MorphGallery (tile cover morphs via layoutId into a full-screen detail card, and back) + PageWipe (per-route wipe in template.tsx). Reduced-motion safe.",
+      "recipe": "elements/page-transition-morph/recipe.md",
+      "files": ["elements/page-transition-morph/MorphGallery.tsx", "elements/page-transition-morph/PageWipe.tsx"],
+      "example": "elements/page-transition-morph/example.usage.tsx",
+      "provenOn": "photographer-portfolio (work gallery; build-verified)",
+      "deps": ["motion"],
+      "config": ["MorphGallery: items[], detailHref?", "PageWipe: panelClassName, barClassName"],
+      "note": "Harvested 2026-06-19; gallery items -> props, wipe colours -> class props. Build-verified on photographer. PageWipe goes in app/template.tsx (re-mounts per route)."
     },
     {
       "name": "entrance-choreography",
