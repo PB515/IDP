@@ -81,13 +81,15 @@
     {
       "name": "material-shader",
       "version": "v1",
-      "status": "todo",
-      "summary": "Custom GLSL material — oxidised-silver / liquid-glass / refraction+bloom.",
-      "recipe": "liquid-glass-3d.md",
-      "source": { "project": "bugadi-showpage", "files": ["flagship oxidised-silver shader"] },
-      "altSource": { "project": "aura-fragrance", "note": "refraction / bloom / particles variant" },
-      "deps": ["three", "@react-three/fiber"],
-      "config": ["shader uniforms", "palette (tokens)"]
+      "status": "proven",
+      "summary": "Animated 'oxidised metal' background band — fragment shader (simplex fbm + domain warp), base->metal mix + accent glint. Perf-safe wrapper + static fallback. Colours via props.",
+      "recipe": "elements/material-shader/recipe.md",
+      "files": ["elements/material-shader/ShaderBand.tsx", "elements/material-shader/ShaderScene.tsx", "elements/material-shader/material-config.ts"],
+      "provenOn": "bugadi-showpage (oxidised-silver band; build-verified)",
+      "altSource": { "project": "aura-fragrance", "note": "refraction / bloom / particles variant -> a future v2/sibling" },
+      "deps": ["three", "@react-three/fiber", "motion"],
+      "config": ["children", "colors {a,b,accent}", "veil"],
+      "note": "Harvested 2026-06-19; colours -> props, build-verified on bugadi. Static fallback derived from colours (self-contained). 3-octave fbm is a perf gate."
     },
     {
       "name": "kinetic-typography",
