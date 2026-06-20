@@ -5,14 +5,16 @@
     {
       "name": "cinematic-scroll-saga",
       "version": "v1",
-      "status": "todo",
+      "status": "proven",
       "summary": "One pinned stage: a 2.5D scene-reel that flows into a guided map tour and closes on a photo. Hard-swap beats (no cross-fade), weighted-timeline pacing.",
-      "recipe": "scroll-storytelling-gsap.md",
-      "source": { "project": "hingulapuran", "files": ["components/ShaktipeethSaga.tsx", "lib/timeline.ts"] },
+      "recipe": "elements/cinematic-scroll-saga/recipe.md",
+      "files": ["elements/cinematic-scroll-saga/CinematicScrollSaga.tsx", "elements/cinematic-scroll-saga/timeline.ts"],
+      "example": "elements/cinematic-scroll-saga/example.config.ts",
+      "provenOn": "hingulapuran (Fall-of-Sati chapter)",
       "deps": ["motion"],
       "assetSlots": ["scenes[].far/subject/near (2.5D layers)", "mapImage", "finalePhoto"],
-      "config": ["scenes[]", "mapBeats[] (x/y markers + title/body)", "finalePhoto?", "pacing weights"],
-      "note": "Freshly proven 2026-06-19. FIRST harvest. Generalize: strip Hinglaj specifics into props; reuse lib/timeline."
+      "config": ["scenes[]", "beats[] (x/y markers + title/body)", "peethas[]", "finalePhoto?", "finaleText?", "pacing weights", "marker colours"],
+      "note": "Harvested 2026-06-19. Self-contained (imports ./timeline). Theme-token driven; marker colours are props."
     },
     {
       "name": "preloader-gateway",
