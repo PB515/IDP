@@ -1,0 +1,150 @@
+{
+  "$comment": "The craft element catalog. status: proven=generalized & registry-ready | todo=shipped on a source site, needs generalizing | superseded | parked. recipe paths are in craft-lab/recipes/. Harvest one brick at a time (see README).",
+  "version": 1,
+  "elements": [
+    {
+      "name": "cinematic-scroll-saga",
+      "version": "v1",
+      "status": "todo",
+      "summary": "One pinned stage: a 2.5D scene-reel that flows into a guided map tour and closes on a photo. Hard-swap beats (no cross-fade), weighted-timeline pacing.",
+      "recipe": "scroll-storytelling-gsap.md",
+      "source": { "project": "hingulapuran", "files": ["components/ShaktipeethSaga.tsx", "lib/timeline.ts"] },
+      "deps": ["motion"],
+      "assetSlots": ["scenes[].far/subject/near (2.5D layers)", "mapImage", "finalePhoto"],
+      "config": ["scenes[]", "mapBeats[] (x/y markers + title/body)", "finalePhoto?", "pacing weights"],
+      "note": "Freshly proven 2026-06-19. FIRST harvest. Generalize: strip Hinglaj specifics into props; reuse lib/timeline."
+    },
+    {
+      "name": "preloader-gateway",
+      "version": "v1",
+      "status": "todo",
+      "summary": "Cinematic entry: doors/curtain slide open on scroll or load to reveal the sanctum behind.",
+      "recipe": "preloader-gateway.md",
+      "source": { "project": "hingulapuran", "files": ["components/DoorHero.tsx"] },
+      "altSource": { "project": "desi-maximalism", "note": "temple-door gateway variant" },
+      "deps": ["motion"],
+      "assetSlots": ["leftDoor", "rightDoor", "backdrop/sanctum"],
+      "config": ["title", "trigger (scroll|load)"]
+    },
+    {
+      "name": "horizontal-scroll",
+      "version": "v1",
+      "status": "todo",
+      "summary": "Pinned horizontal scroll-painting / lookbook driven by vertical scroll.",
+      "recipe": "horizontal-scroll.md",
+      "source": { "project": "hingulapuran", "files": ["components/LegendScroll.tsx"] },
+      "deps": ["motion"],
+      "assetSlots": ["panels[] or one wide cloth image"],
+      "config": ["panels[]", "headings[]", "length (vh)"]
+    },
+    {
+      "name": "scene-reel-2.5d",
+      "version": "v1",
+      "status": "superseded",
+      "summary": "Standalone 2.5D parallax scene-reel (far/subject/near cut-outs, emerge-from-back).",
+      "recipe": "parallax-depth.md",
+      "source": { "project": "hingulapuran", "files": ["components/SceneReel.tsx (git history)"] },
+      "note": "Folded into cinematic-scroll-saga. Keep as a lighter standalone option if needed."
+    },
+    {
+      "name": "cylinder-carousel",
+      "version": "v1",
+      "status": "parked",
+      "summary": "3D cylindrical carousel — panels on a virtual cylinder, rotates with scroll.",
+      "recipe": "scroll-storytelling-gsap.md",
+      "source": { "project": "hingulapuran", "files": ["components/CylinderReel.tsx (git history)"] },
+      "deps": ["motion"],
+      "assetSlots": ["panels[]"],
+      "note": "Built as a demo, not adopted. Good for a browse/collection view."
+    },
+    {
+      "name": "r3f-3d-hero",
+      "version": "v1",
+      "status": "todo",
+      "summary": "React-Three-Fiber 3D hero object with mouse-driven camera (e.g. neural core / orbital rings).",
+      "recipe": "r3f-3d-hero.md",
+      "source": { "project": "command-center-os", "files": ["the 3D feature / neural core"] },
+      "altSource": { "project": "bugadi-showpage", "note": "flagship-tier 3D hero piece" },
+      "deps": ["three", "@react-three/fiber", "@react-three/drei"],
+      "assetSlots": ["model/geometry params"],
+      "config": ["object type", "colors (tokens)", "camera sensitivity"]
+    },
+    {
+      "name": "material-shader",
+      "version": "v1",
+      "status": "todo",
+      "summary": "Custom GLSL material — oxidised-silver / liquid-glass / refraction+bloom.",
+      "recipe": "liquid-glass-3d.md",
+      "source": { "project": "bugadi-showpage", "files": ["flagship oxidised-silver shader"] },
+      "altSource": { "project": "aura-fragrance", "note": "refraction / bloom / particles variant" },
+      "deps": ["three", "@react-three/fiber"],
+      "config": ["shader uniforms", "palette (tokens)"]
+    },
+    {
+      "name": "kinetic-typography",
+      "version": "v1",
+      "status": "todo",
+      "summary": "Oversized animated headline type (kinetic / poster-retro).",
+      "recipe": "kinetic-typography.md",
+      "source": { "project": "desi-maximalism", "files": ["poster-retro page"] },
+      "deps": ["motion"],
+      "config": ["lines[]", "stagger", "ease"]
+    },
+    {
+      "name": "custom-cursor",
+      "version": "v1",
+      "status": "todo",
+      "summary": "Branded custom cursor with hover states.",
+      "recipe": "custom-cursor.md",
+      "source": { "project": "desi-maximalism" },
+      "altSource": { "project": "photographer-portfolio" },
+      "config": ["cursor variants", "blend mode"]
+    },
+    {
+      "name": "hover-image-distortion",
+      "version": "v1",
+      "status": "todo",
+      "summary": "WebGL hover distortion / displacement on images.",
+      "recipe": "hover-image-distortion.md",
+      "source": { "project": "desi-maximalism", "files": ["folk-painting page"] },
+      "deps": ["three"]
+    },
+    {
+      "name": "page-transition-morph",
+      "version": "v1",
+      "status": "todo",
+      "summary": "Route transitions with shared-element morph between pages.",
+      "recipe": "shared-element-morph.md",
+      "source": { "project": "photographer-portfolio", "files": ["brutalist portfolio route transitions"] },
+      "altRecipe": "page-transitions.md",
+      "deps": ["motion"]
+    },
+    {
+      "name": "entrance-choreography",
+      "version": "v1",
+      "status": "todo",
+      "summary": "Staggered hero entrance with easing comparator (the Essential-tier reveal).",
+      "recipe": "entrance-choreography.md",
+      "source": { "project": "bugadi-showpage", "files": ["stage 0"] },
+      "deps": ["motion"]
+    },
+    {
+      "name": "smooth-scroll",
+      "version": "v1",
+      "status": "todo",
+      "summary": "Lenis smooth-scroll provider (foundation many elements assume).",
+      "recipe": "smooth-scroll-lenis.md",
+      "source": { "project": "command-center-os", "files": ["SmoothScroll provider"] },
+      "deps": ["lenis"]
+    },
+    {
+      "name": "microinteractions",
+      "version": "v1",
+      "status": "todo",
+      "summary": "Hover depth, magnetic buttons, small reveal/pop pieces.",
+      "recipe": "microinteractions.md",
+      "source": { "project": "bugadi-showpage" },
+      "note": "Overlaps the existing `motion` skill — keep as a reference recipe, not a heavy element."
+    }
+  ]
+}
