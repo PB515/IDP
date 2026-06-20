@@ -146,11 +146,12 @@
     {
       "name": "entrance-choreography",
       "version": "v1",
-      "status": "todo",
-      "summary": "Staggered hero entrance with easing comparator (the Essential-tier reveal).",
-      "recipe": "entrance-choreography.md",
-      "source": { "project": "bugadi-showpage", "files": ["stage 0"] },
-      "deps": ["motion"]
+      "status": "superseded",
+      "summary": "Staggered hero entrance + easing comparator (bugadi stage-0 lookbook).",
+      "recipe": "craft-lab/recipes/entrance-choreography.md",
+      "source": { "project": "bugadi-showpage", "files": ["stage 0 (lookbook/demo)"] },
+      "deps": ["motion"],
+      "note": "Folded into `reveal` — the reusable part is reveal-on-scroll + increasing per-sibling delay. The easing comparator was a demo, not a shippable element."
     },
     {
       "name": "smooth-scroll",
@@ -167,11 +168,14 @@
     {
       "name": "microinteractions",
       "version": "v1",
-      "status": "todo",
-      "summary": "Hover depth, magnetic buttons, small reveal/pop pieces.",
-      "recipe": "microinteractions.md",
-      "source": { "project": "bugadi-showpage" },
-      "note": "Overlaps the existing `motion` skill — keep as a reference recipe, not a heavy element."
+      "status": "proven",
+      "summary": "Small hover moments. v1 = MagneticButton (eases toward the cursor, springs back). Transform-only, reduced-motion safe, keyboard-reachable.",
+      "recipe": "elements/microinteractions/recipe.md",
+      "files": ["elements/microinteractions/MagneticButton.tsx"],
+      "provenOn": "bugadi-showpage (Showcase)",
+      "deps": ["motion"],
+      "config": ["href", "children", "strength", "className"],
+      "note": "Harvested 2026-06-19 verbatim. Grow with sibling micro-pieces (hover-depth, tilt)."
     }
   ]
 }
