@@ -130,11 +130,14 @@
     {
       "name": "hover-image-distortion",
       "version": "v1",
-      "status": "todo",
-      "summary": "WebGL hover distortion / displacement on images.",
-      "recipe": "hover-image-distortion.md",
-      "source": { "project": "desi-maximalism", "files": ["folk-painting page"] },
-      "deps": ["three"]
+      "status": "proven",
+      "summary": "RippleImage — liquid ripple on hover via SVG feTurbulence + feDisplacementMap (NO WebGL/three). Any <img>, GPU-composited, heavy-media + reduced-motion safe.",
+      "recipe": "elements/hover-image-distortion/recipe.md",
+      "files": ["elements/hover-image-distortion/RippleImage.tsx"],
+      "provenOn": "desi-maximalism (folk gallery; build-verified)",
+      "deps": [],
+      "config": ["src", "alt", "fallback?", "intensity", "className"],
+      "note": "Harvested 2026-06-19; removed the desi bg token, added intensity prop. SVG filter, no three.js — corrected the catalog (was tagged WebGL)."
     },
     {
       "name": "page-transition-morph",
