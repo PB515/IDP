@@ -19,6 +19,8 @@ The build agent then:
 3. Scaffolds its **data file** from the schema and wires the site's **images** into the asset slots.
 4. Installs deps, builds, **verifies** (per the build discipline below).
 
+→ **Full step-by-step in [`ADD-ELEMENT.md`](ADD-ELEMENT.md)** (the consumption playbook + a quick map of every element).
+
 ## What makes an element library-grade (the contract)
 
 An element enters the registry as `status: proven` **only** when it is:
@@ -46,6 +48,13 @@ Debug by **subtraction**: strip to the simplest thing that works, add back ONE l
 - `superseded` — replaced by a better version (kept for reference / git history).
 - `parked` — built but set aside (e.g. a demo not adopted).
 
-## Harvest order
-Bricks are generalized **one at a time**, freezing each when proven. Next up: see the first
-`todo` in the registry. Start with `cinematic-scroll-saga` (freshly proven on Hingulapuran).
+## Status — library complete (2026-06-19)
+**12 elements proven, 0 todo.** Harvested one at a time, each generalized → dogfooded on its source
+site → frozen here (the 3D / GLSL / routing ones build-verified in their repos):
+
+`cinematic-scroll-saga` · `preloader-gateway` · `horizontal-scroll` · `r3f-3d-hero` · `material-shader` ·
+`hover-image-distortion` · `page-transition-morph` · `kinetic-typography` · `reveal` · `custom-cursor` ·
+`smooth-scroll` · `microinteractions`. (`scene-reel-2.5d`, `entrance-choreography`, `cylinder-carousel`
+are superseded/parked — see registry.)
+
+New bricks follow the same harvest discipline; add them as `proven` only once shipped + generalized.
