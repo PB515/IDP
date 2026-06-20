@@ -91,22 +91,38 @@
     {
       "name": "kinetic-typography",
       "version": "v1",
-      "status": "todo",
-      "summary": "Oversized animated headline type (kinetic / poster-retro).",
-      "recipe": "kinetic-typography.md",
-      "source": { "project": "desi-maximalism", "files": ["poster-retro page"] },
+      "status": "proven",
+      "summary": "SplitText — splits a line into chars/words and reveals them staggered (rise + rotate) on scroll-in. Accessible (aria-label).",
+      "recipe": "elements/kinetic-typography/recipe.md",
+      "files": ["elements/kinetic-typography/SplitText.tsx"],
+      "provenOn": "desi-maximalism (Showcase)",
       "deps": ["motion"],
-      "config": ["lines[]", "stagger", "ease"]
+      "config": ["text", "by (char|word)", "stagger", "delay", "y"],
+      "note": "Harvested 2026-06-19 verbatim (already generic)."
+    },
+    {
+      "name": "reveal",
+      "version": "v1",
+      "status": "proven",
+      "summary": "Reveal-on-scroll wrapper — fades + rises children once on viewport enter. Reduced-motion safe. The workhorse for entrance polish.",
+      "recipe": "elements/reveal/recipe.md",
+      "files": ["elements/reveal/Reveal.tsx"],
+      "provenOn": "every Showcase site",
+      "deps": ["motion"],
+      "config": ["children", "delay", "y", "className"],
+      "note": "Harvested 2026-06-19 verbatim. Use increasing delay on siblings for staggered groups."
     },
     {
       "name": "custom-cursor",
       "version": "v1",
-      "status": "todo",
-      "summary": "Branded custom cursor with hover states.",
-      "recipe": "custom-cursor.md",
-      "source": { "project": "desi-maximalism" },
-      "altSource": { "project": "photographer-portfolio" },
-      "config": ["cursor variants", "blend mode"]
+      "status": "proven",
+      "summary": "Accent dot + lerp-trailing ring that grows on interactive hover. Fine-pointer only; reduced-motion safe.",
+      "recipe": "elements/custom-cursor/recipe.md",
+      "files": ["elements/custom-cursor/CustomCursor.tsx", "elements/custom-cursor/cursor.css"],
+      "provenOn": "desi-maximalism (Showcase)",
+      "deps": [],
+      "config": ["--cursor-dot / --cursor-ring / --cursor-accent CSS vars", "data-cursor opts elements into hover-grow"],
+      "note": "Harvested 2026-06-19. Colours generalized to CSS vars with fallbacks."
     },
     {
       "name": "hover-image-distortion",
@@ -139,11 +155,14 @@
     {
       "name": "smooth-scroll",
       "version": "v1",
-      "status": "todo",
-      "summary": "Lenis smooth-scroll provider (foundation many elements assume).",
-      "recipe": "smooth-scroll-lenis.md",
-      "source": { "project": "command-center-os", "files": ["SmoothScroll provider"] },
-      "deps": ["lenis"]
+      "status": "proven",
+      "summary": "Lenis smooth-scroll off the GSAP ticker (ScrollTrigger sync) + anchor smooth-scroll; reduced-motion safe. Foundation many scroll elements assume.",
+      "recipe": "elements/smooth-scroll/recipe.md",
+      "files": ["elements/smooth-scroll/SmoothScroll.tsx"],
+      "provenOn": "command-center-os (Showcase)",
+      "deps": ["lenis", "gsap"],
+      "config": ["mount once near root; no props"],
+      "note": "Harvested 2026-06-19 verbatim. Drop the gsap ticker for a lenis-only lighter variant."
     },
     {
       "name": "microinteractions",
