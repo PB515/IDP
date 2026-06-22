@@ -32,3 +32,11 @@
 - **Open-question resolved (for v0):** name = `discovery`; output format = the worked-example shape.
 - **Proof status:** #1 (cross-tier ✓✓), #6 (with/without ✓). Still open: a **Signature** run *through v0* (advances #1 3rd tier + #4 trigger/usage at once), and a **real build round-trip** (#2/#3).
 - **Next:** run a Signature brief through v0 as a *test of the skill* (not a hand-run), then the first real build to round-trip it.
+
+### 2026-06-20 — Round-trip vs a REAL build (Inspire Academy) + the two-axis refinement
+- User offered `Desktop/aa` (= **Inspire Academy**, a foundational IDP build) as a "Signature" example. Ran discovery on it honestly → `worked-examples/client-03-inspire-academy.md`.
+- **Honest verdict: capability = HIGH (marketing + parent portal + full ops/CMS) · craft tier = ESSENTIAL** (docs specify restrained reveal/pop-in motion, calm/credible brand; no GSAP/Three/Lenis). The shipped site **matches discovery's predicted verdict on every row** → first real **round-trip** (proof-bar #2/#3) on a foundational build, not a constructed brief.
+- **Biggest refinement so far → folded into SKILL.md:** capability and craft tier are **two independent axes**. "Signature" was used in the *polish/feature* (capability) sense, not the *craft-tier* sense. The skill now reports both axes separately and disambiguates the word "Signature."
+- **Did NOT rubber-stamp "Signature"** — that honesty is the point (a joke skill would have). Inspire Academy made the *correct* Essential-craft call; capturing that is what proves the rubric.
+- **Proof status now:** #1 cross-tier 3 cases (Flagship · Essential · capability-heavy/craft-Essential) but still no true **Signature-CRAFT** example; #2/#3 round-trip ✓ (Inspire); #5 portable ✓; #6 with/without ✓; #4 partial (loads).
+- **Next:** capture the **`bugadi-showpage` Signature tier** (real GSAP scroll-story + micro-interactions) as `client-04` to fill the genuine Signature-craft slot → then #1 is complete across all three craft tiers.

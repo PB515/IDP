@@ -34,6 +34,8 @@ For every feature:
 
 Map capability to the in-repo catalog (golden-paths: ecommerce/portal/portfolio/marketing; modules: billing-gst, pwa, adapter-boundary, content-model, …). This table is the skill's central output.
 
+> **Two axes — report both, separately (refinement from client-03).** *Capability* (what the IDP backend builds: marketing / ecommerce / portal / ops / CMS / auth) and *craft tier* (how much cinematic craft the front-of-house earns: E/S/F) are **independent**. A site can be **capability-flagship + craft-Essential** (Inspire Academy: huge ops/portal, deliberately restrained motion — the *correct* call). Never let one imply the other. If a client says "Signature," disambiguate: do they mean a *big/polished/full-featured* build (capability) or a *cinematic* one (craft tier)? `doc-gen-master` needs both verdicts.
+
 ### 5. Assign tiers with the scorecard + the hard overrides (below)
 - Score the brief, map to a tier.
 - **Restraint-with-rationale is a first-class output.** Be willing to **down-tier the client's loud ask** and give them the words to say no. Default to the **lower** tier when unsure. Tiers can be **mixed per section** (e.g. Flagship home + Essential reader; Essential site + one Signature accent on the thing that sells).
