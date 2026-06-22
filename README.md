@@ -10,6 +10,7 @@ It is built using its own method, so it carries its own `CLAUDE.md` and build lo
 
 ## Where to start
 
+- **New here / need to explain what this is?** → [`docs/what-is-the-idp.md`](docs/what-is-the-idp.md) — the plain-language explainer + pitch.
 - **Using the IDP to build a site?** → [`docs/idp-usage-guide.md`](docs/idp-usage-guide.md) — the end-to-end workflow, one page.
 - **Building/extending the IDP itself?** → [`CLAUDE.md`](CLAUDE.md) (context anchor) + [`docs/idp-build-charter.md`](docs/idp-build-charter.md) (the build spec & slice order).
 - **What's planned / deferred?** → [`BACKLOG.md`](BACKLOG.md) (the v5 ledger).
