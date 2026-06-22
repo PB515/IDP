@@ -38,7 +38,9 @@ Map capability to the in-repo catalog (golden-paths: ecommerce/portal/portfolio/
 
 ### 5. Assign tiers with the scorecard + the hard overrides (below)
 - Score the brief, map to a tier.
-- **Restraint-with-rationale is a first-class output.** Be willing to **down-tier the client's loud ask** and give them the words to say no. Default to the **lower** tier when unsure. Tiers can be **mixed per section** (e.g. Flagship home + Essential reader; Essential site + one Signature accent on the thing that sells).
+- **Restraint-with-rationale is a first-class output.** Be willing to **down-tier the client's loud ask** and give them the words to say no. Default to the **lower** tier when unsure.
+- **Tier per SURFACE, not per brand (refinement from client-04).** Assign a tier *per route/surface*, and apply the hard-overrides per surface: the same brand can be **Signature on its lookbook and Essential on its store** (a commerce/funnel page inside an otherwise-cinematic site still drops to Essential). Output a tier per section in the site map (step 6).
+- **A Flagship *accent* is a real option** — one 3D/shader moment on an otherwise-Signature/Essential site, placed where it doesn't tax a funnel. Offer "tier + optional accent," not just a single tier. Always pair a Signature/Flagship call with its **required degraded path** (reduced-motion / no-JS static).
 
 ### 6. Site map — with the tier per section
 Each route + its tier. This is where mixed-tier discipline becomes concrete.

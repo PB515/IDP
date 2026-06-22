@@ -40,3 +40,11 @@
 - **Did NOT rubber-stamp "Signature"** — that honesty is the point (a joke skill would have). Inspire Academy made the *correct* Essential-craft call; capturing that is what proves the rubric.
 - **Proof status now:** #1 cross-tier 3 cases (Flagship · Essential · capability-heavy/craft-Essential) but still no true **Signature-CRAFT** example; #2/#3 round-trip ✓ (Inspire); #5 portable ✓; #6 with/without ✓; #4 partial (loads).
 - **Next:** capture the **`bugadi-showpage` Signature tier** (real GSAP scroll-story + micro-interactions) as `client-04` to fill the genuine Signature-craft slot → then #1 is complete across all three craft tiers.
+
+### 2026-06-21 — Signature example + proof #1 COMPLETE (client-04)
+- Captured `worked-examples/client-04-bugadi-showpage.md` — the real `Desktop/bugadi-showpage` (GSAP pinned `HeritageStory` + `MagneticButton` + a R3F 3D **accent** + `StaticHeritage` fallback + `/tiers`). Verdict: **Signature + Flagship accent**, brand/lookbook surface.
+- **Second round-trip:** discovery's Signature+accent prediction matches the shipped craft on every row.
+- **Proof-bar #1 now COMPLETE** across all three craft tiers + the capability axis: Flagship (Hinglaj) · Essential (coaching) · capability-heavy/craft-Essential (Inspire) · Signature (Bugadi-showpage). **Two real round-trips** (Inspire, Bugadi-showpage).
+- **Refinement → folded into SKILL.md:** **tier is per SURFACE, not per brand** (same brand: Essential store + Signature lookbook; overrides apply per route). And **a Flagship *accent*** is an explicit option (one 3D/shader moment), always paired with its degraded path.
+- **Proof status:** #1 ✓ (all tiers + capability) · #2/#3 ✓ (two round-trips) · #5 ✓ portable · #6 ✓ with/without · #4 ◐ (loads; needs forward-eval). **Only gap to `proven`: a forward round-trip** — run v0 on a NEW brief, then build it, and confirm the shipped site matches (vs the two *backward* round-trips done so far).
+- **Next:** a forward round-trip on a real upcoming client (the Hinglaj build is the natural one), then flip SKILL.md v0 → `proven`.
