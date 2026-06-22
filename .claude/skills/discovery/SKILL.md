@@ -80,6 +80,8 @@ Score each 0–2, sum:
 
 **0–3 → Essential · 4–7 → Signature · 8–10 → Flagship.**
 
+> **"Brand sells on identity" is two different things (refinement from client-04).** *Expressive* identity (fashion, creative, artist — spectacle is the point) scores **2** → craft up. *Credible* identity (builder, engineer, consultant, expert — wins on **trust/substance**) scores **1**, and the brand **voice** ("calm / plain-spoken / credible") is itself a **hard down-tier signal**, like a conversion funnel. So "portfolio" is NOT auto-Signature — a credible-builder portfolio correctly lands **Essential** (Purven did). Read the *voice*, not the category.
+
 ### Hard overrides (drop a tier regardless of score)
 - **Conversion-critical funnel** → speed wins. *(Coaching: the client asked for edtech animations; the funnel + low-end audience → Essential, refuse the flashy ask.)*
 - **Audience skews low-end / accessibility-heavy** → lead with the lite path.

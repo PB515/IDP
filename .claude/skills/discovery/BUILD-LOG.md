@@ -41,6 +41,13 @@
 - **Proof status now:** #1 cross-tier 3 cases (Flagship · Essential · capability-heavy/craft-Essential) but still no true **Signature-CRAFT** example; #2/#3 round-trip ✓ (Inspire); #5 portable ✓; #6 with/without ✓; #4 partial (loads).
 - **Next:** capture the **`bugadi-showpage` Signature tier** (real GSAP scroll-story + micro-interactions) as `client-04` to fill the genuine Signature-craft slot → then #1 is complete across all three craft tiers.
 
+### 2026-06-22 — Round-trip #2 (Purven portfolio) + the "identity" refinement
+- Ran discovery on `Desktop/Portfolio-site` (Purven, foundational build) → `worked-examples/client-04-purven-portfolio.md`. (Note: this took the `client-04` slot; the bugadi-showpage Signature capture moves to `client-05`.)
+- **Verdict: capability moderate (portfolio CMS) · craft ESSENTIAL** — restrained by design (docs/04: "calm, understated, motion confirms structure never decorates"; no GSAP/Three). Shipped build matches → **second real round-trip** (#2/#3).
+- **The refinement (folded into SKILL.md + the scorecard):** the "brand sells on **identity**" signal splits into **expressive** identity (spectacle → craft up, scores 2) vs **credible** identity (builder/engineer/consultant — substance/trust → restraint, scores 1; brand *voice* is a hard down-tier). So **"portfolio" is NOT auto-Signature** — Purven correctly lands Essential. Read the voice, not the category.
+- **Pattern across the real cases:** coaching (Essential) · Inspire (capability-heavy/Essential) · Purven (portfolio/Essential) — the user's real client work is **credibility/conversion-led → Essential**. Rubric is strongly validated at Essential + Flagship (Hinglaj); the only gap is a **shipped Signature**, not the method. The genuine Signature example remains the `bugadi-showpage` lab tier (→ client-05).
+- **Proof status:** #1 four cases (all Essential-ish + Flagship); #2/#3 round-trip ✓✓ (two real builds); #5 portable ✓; #6 with/without ✓; #4 loads ✓. Open: a shipped-Signature round-trip; trigger evals.
+
 ### 2026-06-21 — Signature example + proof #1 COMPLETE (client-04)
 - Captured `worked-examples/client-04-bugadi-showpage.md` — the real `Desktop/bugadi-showpage` (GSAP pinned `HeritageStory` + `MagneticButton` + a R3F 3D **accent** + `StaticHeritage` fallback + `/tiers`). Verdict: **Signature + Flagship accent**, brand/lookbook surface.
 - **Second round-trip:** discovery's Signature+accent prediction matches the shipped craft on every row.
