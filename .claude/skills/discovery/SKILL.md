@@ -5,7 +5,7 @@ description: Turn a fuzzy client website idea into a structured, buildable brief
 
 # Discovery — fuzzy idea → buildable, tier-tagged brief
 
-> **v0 (draft).** Distilled from 2 cross-tier worked examples (`worked-examples/client-01-hingulapuran.md` = Flagship, `client-02-coaching.md` = Essential). Becomes `proven` only after the proof bar in `SPEC.md` passes (≥3 cross-tier briefs incl. a Signature, a round-tripped real build, and trigger evals). Refine it against every new run.
+> **v0 (draft — strongly validated, ready to use).** Distilled + refined across **6 worked examples** spanning every tier: Flagship (Hinglaj, client-01) · Essential ×3 (coaching/Inspire/Purven, client-02/03/04) · Signature (Bugadi showpage, client-05) · up-tier luxury (attar, client-06, a **live skill invocation**). Proof bar (`SPEC.md`): **#1 cross-tier ✅ · #2/#3 round-trip ✅ (3 real builds, reverse) · #5 portable ✅ · #6 with/without ✅ · #4 execution ✅ (auto-trigger evals pending)**. Flips to `proven` after the last item: a **forward** round-trip (the Hinglaj client build: brief → build → shipped matches). Keep refining against every run.
 
 ## What this does
 The IDP's missing **front door**. It takes a raw client idea (a sentence or a transcript) and produces a single artifact the rest of the pipeline consumes: a **feature → IDP-capability → craft-tier → perf** map, a tiered site map, the open questions for the client, and a tightened brief ready for `doc-gen-master`.
