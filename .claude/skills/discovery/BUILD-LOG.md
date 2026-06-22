@@ -55,6 +55,13 @@
 - **Confirmed on a real artifact:** same brand → per-surface tiers (showpage Signature vs the separate store Essential). Mixed-tier output is right.
 - **Remaining for `proven`:** (a) live **trigger evals** (#4 — actually invoke the skill, not hand-run), (b) a **forward round-trip** on a new build (the Hinglaj client: discovery brief → build → shipped matches). Everything else on the proof bar is green.
 
+### 2026-06-22 — Live eval (#4 execution half) — invoked the skill, it tiered UP correctly
+- **Invoked `discovery` via the Skill tool** (not a hand-run) on an unseen **expressive luxury** brief (a Jaipur attar house) → `worked-examples/client-06-attar-house.md`. Deliberately the **up-tier** direction no prior example tested.
+- **Result: correct + sophisticated.** Scored 10 → it tiered **UP** (Flagship/Signature), and crucially read "**wow = 2**" here vs "**wow = 0**" for coaching (desire-sells-luxury vs funnel-needs-speed — same question, opposite correct answer). Applied the **per-surface override** (Flagship-accent home + Signature story/catalogue + **Essential checkout**) and surfaced the asset-pipeline long-pole — all **from the written skill, not from me**.
+- **Proves #4's execution half:** invoked fresh, the skill produces the right output, including the up-tier case the worked examples never had. The client-04 per-surface refinement is load-bearing (it fired here unprompted).
+- **Still open for fully `proven`:** the *description-triggering* half of #4 (skill-creator evals — does it auto-fire on the right phrasing) + a **forward** round-trip (Hinglaj: brief → build → shipped). This run was an explicit invocation (execution proven), not an auto-trigger test.
+- **Tally:** 6 worked examples now span Essential ×3 · Signature (Bugadi) · Flagship (Hinglaj) · **up-tier luxury (attar, live eval)**. The rubric is validated across the full spectrum, both directions.
+
 ### 2026-06-21 — Signature example + proof #1 COMPLETE (client-04)
 - Captured `worked-examples/client-04-bugadi-showpage.md` — the real `Desktop/bugadi-showpage` (GSAP pinned `HeritageStory` + `MagneticButton` + a R3F 3D **accent** + `StaticHeritage` fallback + `/tiers`). Verdict: **Signature + Flagship accent**, brand/lookbook surface.
 - **Second round-trip:** discovery's Signature+accent prediction matches the shipped craft on every row.
