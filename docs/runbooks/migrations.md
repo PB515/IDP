@@ -43,3 +43,18 @@ alter table orders drop column refunded_at;
 ## Schema-level drift
 
 `db:check` compares the migration *files* to the applied state. For true schema drift (the DB structure vs your SQL), use `supabase db diff --local`.
+
+## Integrating into a client's EXISTING database (namespaced)
+
+*The runner above assumes you own the DB. The other real scenario: your tool deploys into a **client's existing Supabase** that already runs their site. You must not collide with or break what's there. (Harvested from a real build that shipped into a client-owned DB.)*
+
+The rules that make this safe:
+
+- **Live in your own schema, never `public`.** Put every table/function in a dedicated schema (e.g. `create schema if not exists myapp;` → `myapp.targets`, `myapp.leads`). Zero collision with whatever the client already has.
+- **Idempotent** — `create ... if not exists` throughout, so re-running is harmless.
+- **Reversible** — a `down` that drops *only your schema* (`drop schema myapp cascade;`), never their tables.
+- **Extensions are a separate, explicit step.** Enabling `pgmq` / `pg_cron` / etc. needs admin rights — call them out as steps the client runs, not buried in your migration.
+- **Scope RLS + RPCs to your schema** — don't touch their row-level policies.
+- **Hand over ONE reviewed `.sql` file** the client runs in their SQL editor. Validate it first against a **local Supabase** (`npm run db:start`) or a throwaway non-prod project — never first-run in their prod.
+
+This pairs with credential-free development (`docs/modules/credential-free-integration.md`): you build + prove everything on a dev stand-in, and integration is "run this one namespaced `.sql` + set env + flip the backend."

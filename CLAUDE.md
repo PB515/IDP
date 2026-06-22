@@ -142,3 +142,10 @@ See [`docs/conventions.md`](docs/conventions.md) — the eight safety rails + th
 - **#9 Golden-paths** — `docs/golden-paths/{ecommerce,portal,portfolio,marketing}.md` — phase order (security-first where auth), what each pulls in, source-build gotchas.
 - **#10 Coverage + skills-SOP** — `docs/golden-paths/README.md` (coverage index) + `docs/skills-sop.md` (the copy-master-per-project lifecycle, the 3-skill cap).
 - **Verify:** 19/19 tests pass; `tsc --noEmit` clean; `next build` green (5 routes incl. manifest). Caught + fixed one wrong test assertion (CGST 30→60).
+
+### Harvest from the scanner build (`Desktop/API`) — DONE (verified)
+*Demand-driven patterns generalized from a real shipped build (the Med-Spa Growth Scanner), brought into the IDP. Patterns/modules, not skills (§8).*
+- **Credential-free dev + code-free integration** — `docs/modules/credential-free-integration.md`: every dependency behind an interface + dev stand-in, one `BACKEND`/env switch, run green with zero keys, integrate = env + migration + flip (no code changes). The big brother of `adapter-boundary`.
+- **Namespaced client-DB migration** — added to `runbooks/migrations.md`: deploying into a client's *existing* Supabase via a dedicated schema (idempotent + reversible, extensions as explicit admin steps, one reviewed `.sql`).
+- **AI no-fabrication guardrail + payload-gate** — `template/lib/logic/ai-guardrail.ts` (`hasNoFabrication`, `assertGated`, configurable banned keys) + `tests/ai-guardrail.test.ts` (6 tests). The "AI invents no numbers; only safe data leaves the server" rails as reusable pure logic.
+- **Verify:** template `tsc --noEmit` clean; **25/25 tests pass** (+6). Modules index updated.
