@@ -48,6 +48,13 @@
 - **Pattern across the real cases:** coaching (Essential) · Inspire (capability-heavy/Essential) · Purven (portfolio/Essential) — the user's real client work is **credibility/conversion-led → Essential**. Rubric is strongly validated at Essential + Flagship (Hinglaj); the only gap is a **shipped Signature**, not the method. The genuine Signature example remains the `bugadi-showpage` lab tier (→ client-05).
 - **Proof status:** #1 four cases (all Essential-ish + Flagship); #2/#3 round-trip ✓✓ (two real builds); #5 portable ✓; #6 with/without ✓; #4 loads ✓. Open: a shipped-Signature round-trip; trigger evals.
 
+### 2026-06-22 — Signature example (Bugadi showpage) — proof #1 COMPLETE across all 3 craft tiers
+- Captured `worked-examples/client-05-bugadi-showpage-signature.md` — round-trip vs the real `Desktop/bugadi-showpage` (craft-lab demo). Confirmed the Signature stack is actually built (`gsap`/@gsap/react + `lenis` + `MagneticButton` + the pinned "Wearable Heritage" GSAP scroll-story); `?tier=` routing + a `/tiers` page. Discovery's **Signature (score 7)** verdict matches the built Signature tier.
+- **Proof #1 is now complete:** Essential (coaching/Inspire/Purven) · **Signature (Bugadi showpage)** · Flagship (Hinglaj) — a real example at every craft tier.
+- **The two-axis bookend:** Inspire = high capability / Essential craft; Bugadi showpage = ~zero capability / Signature craft → opposite corners, strongest proof the two axes are independent. And the identity refinement holds both ways: expressive identity (jewellery) scores 2; credible identity (builder) scores 1.
+- **Confirmed on a real artifact:** same brand → per-surface tiers (showpage Signature vs the separate store Essential). Mixed-tier output is right.
+- **Remaining for `proven`:** (a) live **trigger evals** (#4 — actually invoke the skill, not hand-run), (b) a **forward round-trip** on a new build (the Hinglaj client: discovery brief → build → shipped matches). Everything else on the proof bar is green.
+
 ### 2026-06-21 — Signature example + proof #1 COMPLETE (client-04)
 - Captured `worked-examples/client-04-bugadi-showpage.md` — the real `Desktop/bugadi-showpage` (GSAP pinned `HeritageStory` + `MagneticButton` + a R3F 3D **accent** + `StaticHeritage` fallback + `/tiers`). Verdict: **Signature + Flagship accent**, brand/lookbook surface.
 - **Second round-trip:** discovery's Signature+accent prediction matches the shipped craft on every row.
