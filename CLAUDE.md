@@ -149,3 +149,11 @@ See [`docs/conventions.md`](docs/conventions.md) — the eight safety rails + th
 - **Namespaced client-DB migration** — added to `runbooks/migrations.md`: deploying into a client's *existing* Supabase via a dedicated schema (idempotent + reversible, extensions as explicit admin steps, one reviewed `.sql`).
 - **AI no-fabrication guardrail + payload-gate** — `template/lib/logic/ai-guardrail.ts` (`hasNoFabrication`, `assertGated`, configurable banned keys) + `tests/ai-guardrail.test.ts` (6 tests). The "AI invents no numbers; only safe data leaves the server" rails as reusable pure logic.
 - **Verify:** template `tsc --noEmit` clean; **25/25 tests pass** (+6). Modules index updated.
+
+### Free-tier keep-alive (Option A) — DONE (verified)
+*A free Supabase project pauses after 7 days idle → site outage until manual restore. Shipped the keep-alive so every clone has it.*
+- `template/db/migrations/0002_keepalive.sql` — `public.keepalive()` (`select now()`), `execute` granted to `anon`.
+- `template/app/api/health/route.ts` — `force-dynamic`; calls `rpc('keepalive')` (a real DB round-trip); returns 200/500. Cast so it compiles before a fresh clone regenerates types.
+- `template/.github/workflows/keepalive.yml` — daily cron curls `<SITE_URL>/api/health` (repo secret `SITE_URL`).
+- `docs/runbooks/free-tier-uptime.md` — Option A (shipped) + the caveats (external-only; GH disables schedules after ~60 days idle → cron-job.org) + better options (Neon auto-resume / Pro / VPS). Indexed in runbooks/README.
+- **Verify (live):** `migrate up` applied 0002 + regenerated types; `select keepalive()` returns a timestamp; `anon` has execute (`t`); template `tsc` clean + `next build` green (`/api/health` = ƒ dynamic).
