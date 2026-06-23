@@ -74,3 +74,4 @@ build agent follow it. Every step below is deterministic from `registry.json` + 
 | `custom-cursor` | dot + trailing ring, hover-grow | `--cursor-*` vars (+ `cursor.css`) |
 | `smooth-scroll` | Lenis provider (mount once) | — |
 | `microinteractions` | `MagneticButton` (eases to cursor) | `href`, `strength` |
+| `ambient-motifs` | sparse motifs fill the gutters; float + cursor-parallax | `motifs[]`, `offset`, `color`, `count` |

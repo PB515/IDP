@@ -185,6 +185,22 @@
       "deps": ["motion"],
       "config": ["href", "children", "strength", "className"],
       "note": "Harvested 2026-06-19 verbatim. Grow with sibling micro-pieces (hover-depth, tilt)."
+    },
+    {
+      "name": "ambient-motifs",
+      "version": "v1",
+      "status": "proven",
+      "summary": "A field of sparse decorative motifs that fill a section's empty gutters. Each floats on its own AND the whole field leans with the cursor (per-motif depth = parallax). A motif pool rotates per section via `offset` so neighbours never match. Desktop-only, reduced-motion safe.",
+      "recipe": "elements/ambient-motifs/recipe.md",
+      "files": ["elements/ambient-motifs/AmbientMotifs.tsx"],
+      "example": "elements/ambient-motifs/example.config.tsx",
+      "provenOn": "hingulapuran (Sati / Hingul / Brahmarandhra / Parashurama gutters; build-verified)",
+      "altSource": { "project": "aa (snehal-soni tutoring)", "note": "FloatingMath — the math-glyph field this was generalized from (presets hero/band/header + hover-glow if a richer variant is wanted)" },
+      "deps": ["motion"],
+      "tier": "signature",
+      "assetSlots": ["motifs[] (inline SVG nodes, 0 0 100 100 viewBox, stroke-only)"],
+      "config": ["motifs[]", "slots[]", "offset", "count", "color", "shift"],
+      "note": "Harvested 2026-06-23. Generalized from aa's FloatingMath: colour -> prop, glyphs -> SVG-motif-nodes prop; devotional kalam set baked as default. Mount as first child of a positioned, overflow-hidden section and lift content to relative z-10 (a -z layer hides behind the section bg — the bug we hit)."
     }
   ]
 }
