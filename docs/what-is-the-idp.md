@@ -4,8 +4,15 @@
 
 ---
 
+## The positioning (say this first)
+> **We don't build showpieces. We build sites that *work* — backend-connected, tracked, reliable, customized — that actually generate leads.**
+
+AI commoditized the **frontend**: anyone can prompt a pretty page now. What stayed hard is the **backend that makes it convert** — database connections, auth + security, forms → leads → email, event tracking, the reliability that separates a *machine that generates leads* from a *showpiece that just looks good*. That backend is what clients can't build themselves, and it's exactly what the IDP is built around. **The frontend isn't the product. The backend that makes it convert is the product.**
+
+The goal isn't "a website, fast" — that's a commodity anyone can do. The goal is **production-grade, reliable, and customized to the client — *and* fast.** That combination is the hard part, and it's the whole point.
+
 ## One-liner
-> A factory for building deployable, one-of-a-kind websites fast: the boring ~80% is pre-built and battle-tested, so effort only goes into the part that makes each site unique.
+> A factory for building **production-grade, lead-generating, one-of-a-kind** websites fast: the reliable backend ~80% is pre-built and battle-tested, so effort goes into the craft and the client's story — the part that makes each site unique.
 
 ## The 30-second version (the model)
 Every website is really three layers: **~80% backend plumbing · ~15% design craft · ~5% the client's actual story.** That 80% is nearly identical on every project (database, auth, payments, deploy, testing), so it's built once, proven on real sites, and **cloned per client**. That frees all the time for the 15% craft and the 5% that's genuinely about *them*. It's not a theme or a template — it standardizes the *plumbing*, never the *look*.
