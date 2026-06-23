@@ -21,8 +21,12 @@
 ## 3. Research
 Indian event semantics matter for the template designs: Marriage (shaadi), Vastu/Griha-Pravesh (housewarming puja — specific motifs), Birthday, Baby-shower (Shimant/Godh-bharai/Seemantham). Templates must respect these, not be generic.
 
-## 4. The reframe (highest-value discovery output)
-**"Copy the webpage and deploy" → "one multi-tenant app; publish an instance."** Literal per-site deploys don't scale to a catalogue + management business (hundreds of projects, unmanageable, can't update a template). Instead: **templates = components; each client site = a row (template_id + content JSON + slug); "deploy" = publish → live at `/e/[slug]`.** Build the multiplicity into the **data**, not into copy-paste. *(Same instinct as "books as a collection from day 1.")*
+## 4. The architecture (corrected by founder input — the KEEPSAKE requirement)
+Initial discovery leaned "one multi-tenant app." **The founder corrected it, and was right:** event sites are *permanent memories* (a wedding at `richawedsrahul.com`) that ~90% of clients want **forever**, on a **custom domain**, possibly **transferred to their own hosting**. A tenant inside a shared app can't be permanent-and-transferable, and a keepsake must not die if the platform does. → **Hybrid (a factory that produces standalone sites — the IDP's own model, fractally):**
+- **Central management platform (founder-owned):** the public **catalogue**, the **admin** (leads + per-client requirements + the editor), and **central RSVP collection** (every event site posts RSVPs here → host guest-lists).
+- **Per-event standalone sites:** generated from a template + the client's content, deployed as their **own Vercel project + custom domain** (`richawedsrahul.com`; Vercel handles SSL/routing, ~₹1000–1200/yr), **permanent + transferable**. A static keepsake + an RSVP form that posts to the central platform (active in the event window).
+
+Separate sites give permanence/ownership/custom-domain; the central platform gives the catalogue/CRM/RSVP. Both requirements honored. *(Lesson for the skill: probe the client's delivery/ownership model — "permanent keepsake, transferable" breaks multi-tenant and is a legit reason for standalone deploys.)*
 
 ## 5. Feature → capability → craft (two axes, split)
 | Surface | Capability (moat) | Craft | Note |
@@ -53,7 +57,7 @@ Event sites + catalogue = the public traffic → guests on low-end Android via W
 6. Languages (EN + Hindi/Gujarati on event sites?).
 
 ## 9. Tightened brief (for doc-gen-master)
-> A multi-tenant **event-website platform**: a **Signature** public catalogue of event-site templates (marriage/vastu/birthday/baby-shower/other) that prospects browse and **enquire** from; an **admin** (founder, RLS) to manage **leads + per-client requirement checklists**, **clone a template into a client instance, edit its content (photos/name/title/slogan/event details), and publish** it to a live slug `/e/[slug]`; and the deployed **single-page event sites** — each visually unique (token-driven), light, with **RSVP capture + a host guest-list**. Architecture: **one multi-tenant app** (templates = components, instances = data + content JSON), NOT per-site deploys. The moat = multi-tenant auth/RLS, the template/instance model, the publish pipeline, the CRM/requirements, RSVP. The one action: catalogue → enquiry; event site → RSVP. Out (phase 2): self-serve editing, custom domains, in-platform payments.
+> An event-website **business as software**: a founder-owned **platform** (Signature public catalogue → enquiry → an Essential admin: leads + per-client requirement checklists + an editor that fills a chosen template with the client's content) that **generates standalone, permanent event sites** — each deployed to its **own Vercel project + custom domain** (`richawedsrahul.com`), single-page, visually unique (token-driven), with an **RSVP form that posts back to the platform** (central guest-lists). Founder-edits-v1 (self-serve = phase 2). The moat = the admin auth/RLS + the CRM/requirements + the template→site generation/deploy pipeline + central RSVP collection. The one action: catalogue → enquiry; event site → RSVP. Out (phase 2): self-serve client editing, in-platform payments.
 
 ## META — notes for the skill
 - **Biggest value was an architecture reframe** (per-deploy → multi-tenant), not a tier call. The skill should explicitly probe "does the client's mental model of *how* it's delivered scale to their *goal*?" — surface scaling/architecture mismatches in discovery, before doc-gen.
