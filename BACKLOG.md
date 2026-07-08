@@ -50,9 +50,14 @@ Validated across all four builds; these become the conventions + `template/` def
 - From the v4 ledger: **Strategy Blueprint (doc 00)**, **CRM / Lead-Handling (doc 12)**, **folder restructure**, **version rename**, **shadow/icon micro-skills**.
 - **SEO keyword plan (doc 06c)** — *deferred*; revisit only if a real-traffic site shows the lack hurts ranking.
 
+## Open (surfaced by the 2026-07-09 hardening pass)
+
+- **Finish §7 validation (DB half).** The non-DB half of "clone → build a real small site" is done (see CLAUDE.md build log). Still need, once on a machine with Docker Desktop: `db:start` → `migrate:up` → `verify:selftest` → `db:check` against a real fresh clone, before the first real client build.
+
 ## Closed
 
 - **doc-gen-master's first real run** — the one open question; it ran across all four builds and worked. Closed.
+- **`template/.env.example` missing from the repo** — `.gitignore`'s `.env*` rule had silently excluded it since Slice 2; fixed with a `!.env.example` exception + the file recreated from `env-validate.ts`'s schema. Found by the §7 validation build.
 
 ---
 

@@ -10,10 +10,10 @@ A base starter repo for producing deployable websites via vibe coding — the ge
 
 ## Current status
 
-- **Phase:** **COMPLETE — Tier-1 MVP + portability + ALL Tier-2. Git-initialised.**
-- **Last completed:** Tier-2 batch 2 — full billing (`lib/logic/invoice.ts` GST snapshot + credit-note reversal, tested), PWA (`app/manifest.ts` + `public/sw.js` + `lib/pwa/register-sw.tsx` + doc), the 4 golden-path recipes, coverage index + `docs/skills-sop.md`. 19 tests pass; template builds green. Repo committed on `main`.
-- **Next up:** nothing required — the IDP is feature-complete per the charter + v5 backlog. Optional: add a git remote + push; run the §7 validation build (clone → build a real small site); replace reconstructed `motion/` with the original if found.
-- **Last commit:** `c3614fa` (baseline) + the Tier-2 batch-2 commit. Branch `main`.
+- **Phase:** **COMPLETE — Tier-1 MVP + portability + ALL Tier-2 + hardening pass. Git-initialised.**
+- **Last completed:** Hardening pass — CI workflow, auto-installed pre-commit hook, motion-skill gap closed, §7 validation build run (non-DB parts) and one real bug found + fixed (`template/.env.example` was gitignored-away, never committed). See build log below.
+- **Next up:** run the DB-dependent half of §7 (`db:start` → `migrate:up` → `verify:selftest` → `db:check`) on a machine with Docker — not done here, this machine has no Docker. Then Tier 3 (see BACKLOG.md).
+- **Last commit:** see `git log` — this copy was re-initialised as its own repo (the prior zip had no `.git`); baseline + hardening commits on `main`.
 
 ## Stack
 
@@ -157,3 +157,12 @@ See [`docs/conventions.md`](docs/conventions.md) — the eight safety rails + th
 - `template/.github/workflows/keepalive.yml` — daily cron curls `<SITE_URL>/api/health` (repo secret `SITE_URL`).
 - `docs/runbooks/free-tier-uptime.md` — Option A (shipped) + the caveats (external-only; GH disables schedules after ~60 days idle → cron-job.org) + better options (Neon auto-resume / Pro / VPS). Indexed in runbooks/README.
 - **Verify (live):** `migrate up` applied 0002 + regenerated types; `select keepalive()` returns a timestamp; `anon` has execute (`t`); template `tsc` clean + `next build` green (`/api/health` = ƒ dynamic).
+
+### Hardening pass — CI, hooks, motion-skill gap, §7 validation — DONE (partial)
+*Prompted by a codebase review before cloning this IDP for real client sites. No `.git` existed in the prior copy — re-initialised as its own repo first.*
+- **CI** — `.github/workflows/ci.yml`: root `typecheck` job + template `typecheck`/`test`/`lint`/`build` job, on every push/PR. Added a root `typecheck` script (`tsc --noEmit`) since none existed. Previously every "verified" line in this log was a one-time manual local run with no repeatable check.
+- **Pre-commit hook auto-install** — `npm run setup` now runs `git config core.hooksPath tooling/hooks` so `ai-tell-lint` is active by default per clone instead of a manual, easy-to-skip step from `tooling/hooks/README.md`.
+- **Motion-skill gap closed** — searched the default branches of the 4 source-site repos on GitHub (`E-com`, `Tuition-Site`, `Hingulapuran`, `Purven-Bhavsar`, `portfolio-site`, `Showcase`) for the original `.claude/skills/motion/SKILL.md` (2026-07-09). Not present in any of them — the builds that have `.claude/skills/` only ever carried `frontend-design` and `taste-skill`. Treating the reconstruction as final; not re-opening unless a private repo or non-default branch surfaces one.
+- **§7 validation build (partial — no Docker on this machine):** cloned this repo into a scratch `acme-bakery/` site exactly per `SETUP.md`/`idp-usage-guide.md` step 0, then ran the full non-DB path a first-time user would: `npm run setup` (root + template install, hook config, `doctor` — correctly reports only Docker missing) → filled `lib/site.ts` placeholders → `env:validate` → `deploy:check` (correctly failed with 7 blockers before filling placeholders/env, correctly passed after) → template `typecheck`/`test` (25/25)/`build`, all green.
+  - **Bug found + fixed:** `template/.env.example` is referenced in 7 places (`SETUP.md`, `CLAUDE.md`, `template/README.md`, `template/lib/README.md`, `tooling/env-validate.ts`, the charter, the Purven retro) but the file never actually existed in the repo — `template/.gitignore`'s `.env*` rule silently matched and excluded `.env.example` too, so it was authored once (Slice 2) and then never committed. Added `!.env.example` to `template/.gitignore` and recreated the file from `tooling/env-validate.ts`'s schema (Supabase 3-var set + `DATABASE_URL` + the payments/shipping adapter vars). Re-ran the validation site's `env:validate`/`deploy:check` after the fix — both flip from failing to green as expected.
+  - **Not run (needs Docker, which isn't installed here):** `db:start`, `migrate:up`, `verify:selftest`, `db:check`. These remain to be run by hand once on a machine with Docker Desktop before the first real client build — see BACKLOG.md.
