@@ -51,7 +51,7 @@ See [`docs/conventions.md`](docs/conventions.md) — the eight safety rails + th
 
 ## Known gaps (tracked, non-blocking)
 
-- **`.claude/skills/motion/SKILL.md`** — authored from spec (original was missing). Swap in the original if found.
+- **`.claude/skills/motion/SKILL.md`** — authored from spec; the original could not be recovered. Checked the 4 source-site repos' default branches (`E-com`, `Tuition-Site`, `Hingulapuran`, `Purven-Bhavsar`, `portfolio-site`, `Showcase`) on 2026-07-09 — `frontend-design` and `taste-skill` exist in the builds that have `.claude/skills/`, but no `motion/` skill was ever committed to any of them. Treating the reconstruction as the permanent version; not re-opening unless a private repo or non-default branch surfaces one.
 - **`docs/retros/`** — Patel CA & Inspire Academy retros missing (evidence only, never shipped).
 - **Tier-2 module sources missing** — `pwa-setup-nextjs`, `site-type-coverage-roadmap`, `skills-library-sop`. All Tier 2 (charter §6) — not needed for the MVP.
 - **2 moderate dev-only npm advisories** in the template, inside Next 16.2.9's pinned deps (postcss) — upstream, not fixable without downgrading Next.
