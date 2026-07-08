@@ -1,5 +1,5 @@
 {
-  "$comment": "The craft element catalog. status: proven=generalized & registry-ready | todo=shipped on a source site, needs generalizing | superseded | parked. recipe paths are in craft-lab/recipes/. Harvest one brick at a time (see README).",
+  "$comment": "The craft element catalog. status: proven=generalized & registry-ready | todo=shipped on a source site, needs generalizing | superseded | parked. For status=proven, `recipe` is a real file in this repo (elements/<name>/recipe.md). For status=superseded/parked, `recipe` is a historical pointer into the SOURCE build's git history (hingulapuran, bugadi-showpage, etc.) -- it will not resolve as a path in this repo by design; see each entry's `source` field. Harvest one brick at a time (see README).",
   "version": 1,
   "elements": [
     {
