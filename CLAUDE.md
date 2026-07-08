@@ -10,9 +10,9 @@ A base starter repo for producing deployable websites via vibe coding — the ge
 
 ## Current status
 
-- **Phase:** **COMPLETE — Tier-1 MVP + portability + ALL Tier-2 + hardening pass. Git-initialised.**
-- **Last completed:** Hardening pass — CI workflow, auto-installed pre-commit hook, motion-skill gap closed, §7 validation build run (non-DB parts) and one real bug found + fixed (`template/.env.example` was gitignored-away, never committed). See build log below.
-- **Next up:** run the DB-dependent half of §7 (`db:start` → `migrate:up` → `verify:selftest` → `db:check`) on a machine with Docker — not done here, this machine has no Docker. Then Tier 3 (see BACKLOG.md).
+- **Phase:** **COMPLETE — Tier-1 MVP + portability + ALL Tier-2 + hardening pass + full §7 validation. Git-initialised, pushed to `github.com/PB515/IDP`.**
+- **Last completed:** Installed Docker Desktop (was missing on this machine) and ran the DB-dependent half of §7: `db:start` → `migrate:up` → `migrate:status` → `db:check` → `verify:selftest`, all green against a real local Postgres. The whole system is now proven end to end, not just per-slice. See build log below.
+- **Next up:** nothing required — start building real client sites per `docs/idp-usage-guide.md`.
 - **Last commit:** see `git log` — this copy was re-initialised as its own repo (the prior zip had no `.git`); baseline + hardening commits on `main`.
 
 ## Stack
@@ -166,3 +166,11 @@ See [`docs/conventions.md`](docs/conventions.md) — the eight safety rails + th
 - **§7 validation build (partial — no Docker on this machine):** cloned this repo into a scratch `acme-bakery/` site exactly per `SETUP.md`/`idp-usage-guide.md` step 0, then ran the full non-DB path a first-time user would: `npm run setup` (root + template install, hook config, `doctor` — correctly reports only Docker missing) → filled `lib/site.ts` placeholders → `env:validate` → `deploy:check` (correctly failed with 7 blockers before filling placeholders/env, correctly passed after) → template `typecheck`/`test` (25/25)/`build`, all green.
   - **Bug found + fixed:** `template/.env.example` is referenced in 7 places (`SETUP.md`, `CLAUDE.md`, `template/README.md`, `template/lib/README.md`, `tooling/env-validate.ts`, the charter, the Purven retro) but the file never actually existed in the repo — `template/.gitignore`'s `.env*` rule silently matched and excluded `.env.example` too, so it was authored once (Slice 2) and then never committed. Added `!.env.example` to `template/.gitignore` and recreated the file from `tooling/env-validate.ts`'s schema (Supabase 3-var set + `DATABASE_URL` + the payments/shipping adapter vars). Re-ran the validation site's `env:validate`/`deploy:check` after the fix — both flip from failing to green as expected.
   - **Not run (needs Docker, which isn't installed here):** `db:start`, `migrate:up`, `verify:selftest`, `db:check`. These remain to be run by hand once on a machine with Docker Desktop before the first real client build — see BACKLOG.md.
+
+### §7 validation — DB half — DONE (verified) · full system now proven end to end
+*Docker wasn't installed on this machine (see above). Installed it (`wsl --install --no-distribution` + `winget install Docker.DockerDesktop`), then completed the half of §7 that needed it.*
+- `npm run db:start` — local Supabase stack up clean on first pull (API :54321, DB :54322).
+- `npm run migrate:up` — both `0001_example.sql` and `0002_keepalive.sql` applied from a zero state; `supabase gen types --local` regenerated `database.types.ts` (proves the CLI-2.106 token-guard workaround from decision #10 still holds on a fresh install — CLI was v2.106.0).
+- `npm run migrate:status` / `db:check` — both migrations show applied, zero drift.
+- `npm run verify:selftest` — seed +2 rows into `example_widget` → snapshot confirms → teardown → snapshot confirms clean (0). Needed a root `.env.local` with `NEXT_PUBLIC_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` (local dev defaults printed by `db:start`, gitignored).
+- **Deviation:** none. This closes the one item BACKLOG.md had open — the whole clone → setup → migrate → verify → build path is now proven on a real run, not just per-slice in isolation.
