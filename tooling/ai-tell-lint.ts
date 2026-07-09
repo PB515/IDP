@@ -104,6 +104,18 @@ function stagedFiles(): string[] {
 
 const TEXTY = /\.(tsx?|jsx?|mdx?|md|html?|json|txt|css)$/i;
 
+/**
+ * Internal method/process docs and automation scripts — never shipped as site
+ * copy, so the AI-tell house style (which uses em-dashes deliberately,
+ * throughout this codebase's own comments and docs) doesn't apply. Excluded
+ * only from the automatic staged-commit lint; still lintable by passing the
+ * path explicitly (`ai-tell-lint.ts docs/conventions.md`). Also covers this
+ * file itself, which inherently contains its own pattern strings as literal
+ * data and would otherwise always self-trip.
+ */
+const INTERNAL_DOC =
+  /(^|\/)(docs\/|tooling\/|README\.md$|CLAUDE\.md$|CLAUDE\.md\.template$|BACKLOG\.md$|CHANGELOG\.md$|SETUP\.md$|\.claude\/|elements\/.*\.md$)/i;
+
 function main() {
   let files = process.argv.slice(2);
   let fromStaged = false;
@@ -116,7 +128,9 @@ function main() {
     }
   }
 
-  const targets = files.filter((f) => existsSync(f) && statSync(f).isFile() && TEXTY.test(f));
+  const targets = files
+    .filter((f) => existsSync(f) && statSync(f).isFile() && TEXTY.test(f))
+    .filter((f) => !fromStaged || !INTERNAL_DOC.test(f));
   const findings = targets.flatMap(lintFile);
 
   if (findings.length === 0) {
