@@ -70,10 +70,37 @@ const c = {
   dim: (s: string) => `\x1b[2m${s}\x1b[0m`,
 };
 
+/** Files where line comments, block comments, and JSDoc lines are code comments, not copy. */
+const COMMENT_AWARE = /\.(tsx?|jsx?|css)$/i;
+
+/**
+ * Strip comment text from a line so the rules only see real content: JSX
+ * text, string literals, CSS values. Returns null for a line that's entirely
+ * a comment. Deliberately simple (line-based, not a parser) — mechanical
+ * hygiene only, matching this tool's own stated scope. A `//` preceded by an
+ * odd number of quote chars is assumed to be inside a string, not a comment,
+ * and left alone.
+ */
+function stripComments(line: string): string | null {
+  const t = line.trim();
+  if (t.startsWith('//') || t.startsWith('/*') || t.startsWith('*') || t === '*/') return null;
+  let out = line.replace(/\/\*.*?\*\//g, ''); // single-line block comments
+  const idx = out.indexOf('//');
+  if (idx !== -1) {
+    const before = out.slice(0, idx);
+    const oddQuotes = [/'/g, /"/g, /`/g].some((re) => ((before.match(re) || []).length) % 2 === 1);
+    if (!oddQuotes) out = out.slice(0, idx);
+  }
+  return out;
+}
+
 function lintFile(file: string): Finding[] {
   const findings: Finding[] = [];
-  const lines = readFileSync(file, 'utf8').split(/\r?\n/);
-  lines.forEach((line, i) => {
+  const commentAware = COMMENT_AWARE.test(file);
+  const rawLines = readFileSync(file, 'utf8').split(/\r?\n/);
+  rawLines.forEach((rawLine, i) => {
+    const line = commentAware ? stripComments(rawLine) : rawLine;
+    if (line === null) return;
     for (const rule of RULES) {
       rule.re.lastIndex = 0;
       let m: RegExpExecArray | null;
