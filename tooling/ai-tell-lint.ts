@@ -75,32 +75,49 @@ const COMMENT_AWARE = /\.(tsx?|jsx?|css)$/i;
 
 /**
  * Strip comment text from a line so the rules only see real content: JSX
- * text, string literals, CSS values. Returns null for a line that's entirely
- * a comment. Deliberately simple (line-based, not a parser) — mechanical
- * hygiene only, matching this tool's own stated scope. A `//` preceded by an
- * odd number of quote chars is assumed to be inside a string, not a comment,
- * and left alone.
+ * text, string literals, CSS values. Tracks whether a multi-line block
+ * comment (CSS header comments, JSDoc) is still open across calls. Returns
+ * null for a line that's entirely comment. Deliberately simple (line-based,
+ * not a parser) — mechanical hygiene only, matching this tool's own stated
+ * scope. A trailing `//` preceded by an odd number of quote chars is assumed
+ * to be inside a string, not a comment, and left alone.
  */
-function stripComments(line: string): string | null {
-  const t = line.trim();
-  if (t.startsWith('//') || t.startsWith('/*') || t.startsWith('*') || t === '*/') return null;
-  let out = line.replace(/\/\*.*?\*\//g, ''); // single-line block comments
+function stripComments(line: string, inBlockComment: boolean): [string | null, boolean] {
+  let out = line;
+  if (inBlockComment) {
+    const end = out.indexOf('*/');
+    if (end === -1) return [null, true]; // still inside the block, nothing to check
+    out = out.slice(end + 2);
+    inBlockComment = false;
+  }
+  out = out.replace(/\/\*.*?\*\//g, ''); // any complete single-line block comments
+  const openIdx = out.indexOf('/*');
+  if (openIdx !== -1) {
+    out = out.slice(0, openIdx);
+    inBlockComment = true; // an unterminated block comment starts here
+  }
+  const t = out.trim();
+  if (t.startsWith('//') || t.startsWith('*') || t === '') return [inBlockComment ? '' : null, inBlockComment];
   const idx = out.indexOf('//');
   if (idx !== -1) {
     const before = out.slice(0, idx);
     const oddQuotes = [/'/g, /"/g, /`/g].some((re) => ((before.match(re) || []).length) % 2 === 1);
     if (!oddQuotes) out = out.slice(0, idx);
   }
-  return out;
+  return [out, inBlockComment];
 }
 
 function lintFile(file: string): Finding[] {
   const findings: Finding[] = [];
   const commentAware = COMMENT_AWARE.test(file);
   const rawLines = readFileSync(file, 'utf8').split(/\r?\n/);
+  let inBlockComment = false;
   rawLines.forEach((rawLine, i) => {
-    const line = commentAware ? stripComments(rawLine) : rawLine;
-    if (line === null) return;
+    let line: string | null = rawLine;
+    if (commentAware) {
+      [line, inBlockComment] = stripComments(rawLine, inBlockComment);
+    }
+    if (!line) return;
     for (const rule of RULES) {
       rule.re.lastIndex = 0;
       let m: RegExpExecArray | null;
