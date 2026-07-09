@@ -32,6 +32,7 @@ Plus the two craft rails:
 - **No new dependencies without asking** (rail 5).
 - **Naming & folders** follow the `template/` structure; brand/contact constants live in `lib/site.ts`, edited once per site.
 - **Polish bar (Phase 5), made explicit because the AI skips it:** responsive to 360px, real empty/error states, SEO (title/meta/OG/schema), accessibility (alt text, focus, contrast, keyboard), performance (image sizes, bundle), analytics + privacy page.
+- **Log token/cost per phase.** Run `/cost` (or your client's equivalent) at the end of each working session and add a row to the IDP's `docs/metrics/token-usage.md` — no tool can recover this after the fact, and it's the only way to eventually know whether the IDP actually saves tokens per site, versus assuming it does.
 
 ---
 

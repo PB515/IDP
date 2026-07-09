@@ -43,7 +43,7 @@ Tokens only — no hardcoded hex · secrets in `.env.local` only · no new/upgra
 
 ## Build log
 
-*Newest last. One entry per phase: what was built, what was verified, any deviation. This is what ends debugging-archaeology.*
+*Newest last. One entry per phase: what was built, what was verified, any deviation. This is what ends debugging-archaeology. Before closing out a phase, also run `/cost` and log a row in the IDP's `docs/metrics/token-usage.md` — see `docs/conventions.md`.*
 
 ### Phase 0 — Setup
 - {{...}}
