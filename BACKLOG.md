@@ -46,7 +46,9 @@ Validated across all four builds; these become the conventions + `template/` def
 
 ## Rejected / do-not-build (kept logged so they don't creep back)
 
-- **More skills** beyond frontend-design / taste-skill / motion; **a custom CSS framework**; **a migration ORM** (SQL files + drift detection is enough); **a component library** (shadcn is the model). *All four retros' explicit "build less."*
+- ~~**More skills** beyond frontend-design / taste-skill / motion~~ — **reversed 2026-07.** 12 skills added in one pass (power-design, shadcn, style-directions, ui-ux-pro-max, GSAP ×8) after a direct SOP-filter review in chat, at the user's explicit direction ("executive permission"). The original "build less" reasoning (four retros, avoid maintenance surface unproven by real use) still applies going forward as the *filter* for the next addition — it just isn't a hard 3-skill cap anymore. See `docs/skills-sop.md` for the current member list and the filter. None of the 12 are validated on a real IDP build yet (tracked in `CLAUDE.md`'s Known gaps).
+- ~~**a component library** (shadcn is the model)~~ — **reversed 2026-07.** shadcn was explicitly named as the example of what not to build, for real reasons: it homogenizes UI across sites (cuts against the IDP's stated anti-sameness positioning), and its registry/preset/upstream-update workflow is a genuinely new maintenance surface nothing else in the IDP has. Brought in anyway at the user's explicit direction, after that tension was surfaced and acknowledged, not silently. Worth re-litigating for real if a site build shows the homogenization risk was overstated, or confirms it wasn't.
+- **a custom CSS framework**; **a migration ORM** (SQL files + drift detection is enough). *Still holds — all four retros' explicit "build less."*
 - From the v4 ledger: **Strategy Blueprint (doc 00)**, **CRM / Lead-Handling (doc 12)**, **folder restructure**, **version rename**, **shadow/icon micro-skills**.
 - **SEO keyword plan (doc 06c)** — *deferred*; revisit only if a real-traffic site shows the lack hurts ranking.
 

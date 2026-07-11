@@ -65,9 +65,18 @@
 ### Repo
 - `git init` on `main`; baseline commit + Tier-2 commit. Add a remote to push.
 
+### Hardening pass + full §7 validation ✅
+- CI (`.github/workflows/ci.yml`), auto-installed pre-commit hook, motion-skill gap formally closed, `template/.env.example` bug found and fixed (silently gitignored since Slice 2), Docker installed and the DB-dependent half of §7 run clean. Full detail in `CLAUDE.md`'s build log.
+
+### Skills-library expansion — 12 skills added ✅ (unvalidated)
+- Added `power-design`, `shadcn`, `style-directions` (66 aesthetic presets), `ui-ux-pro-max`, and GSAP as 8 skills (`gsap-core`/`-timeline`/`-scrolltrigger`/`-react`/`-frameworks`/`-plugins`/`-performance`/`-utils`, a second sanctioned animation library alongside Motion). Updated `frontend-design` to a more developed version.
+- Reverses two prior rejected-ledger entries ("more skills," "a component library") — logged explicitly in `BACKLOG.md`, not silently overwritten.
+- Extended `docs/modules/adapter-boundary.md` with a general polyglot-boundary principle. Retired the stale "3-skill cap" in `docs/skills-sop.md` / `INDEX.md`.
+- Not yet validated on a real build — tracked in `CLAUDE.md`'s Known gaps.
+
 ## Status
 
-**Feature-complete per the charter + v5 backlog: Tier-1 MVP + portability + all Tier-2.** Optional next: push to a remote; run the §7 validation build (clone → build a small real site).
+**Feature-complete per the charter + v5 backlog: Tier-1 MVP + portability + all Tier-2 + hardening + full §7 validation + skills-library expansion.** Pushed to `github.com/PB515/IDP`. Next: validate the new skills on a real site build; the two overlap questions flagged in `CLAUDE.md`'s Known gaps.
 - Slice 4 — Verification / test harness.
 - Slice 5 — Visual layer (tokens + skills + ai-tell-lint).
 
