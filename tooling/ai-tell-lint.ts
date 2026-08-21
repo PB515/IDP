@@ -98,11 +98,24 @@ function stripComments(line: string, inBlockComment: boolean): [string | null, b
   }
   const t = out.trim();
   if (t.startsWith('//') || t.startsWith('*') || t === '') return [inBlockComment ? '' : null, inBlockComment];
-  const idx = out.indexOf('//');
-  if (idx !== -1) {
+  // Scan every `//` occurrence, not just the first — a URL literal like
+  // 'https://example.com' contains its own `//` before any real trailing
+  // comment marker. Stopping at the first quote-protected occurrence (rather
+  // than continuing to search past it) was a real bug: it correctly detected
+  // the URL's `//` as "inside a string" and then gave up entirely, leaving a
+  // genuine trailing `// comment — with an em-dash` unstripped and flagged
+  // as if it were site copy.
+  let searchFrom = 0;
+  while (true) {
+    const idx = out.indexOf('//', searchFrom);
+    if (idx === -1) break;
     const before = out.slice(0, idx);
     const oddQuotes = [/'/g, /"/g, /`/g].some((re) => ((before.match(re) || []).length) % 2 === 1);
-    if (!oddQuotes) out = out.slice(0, idx);
+    if (!oddQuotes) {
+      out = out.slice(0, idx);
+      break;
+    }
+    searchFrom = idx + 2;
   }
   return [out, inBlockComment];
 }
@@ -149,16 +162,26 @@ function stagedFiles(): string[] {
 const TEXTY = /\.(tsx?|jsx?|mdx?|md|html?|json|txt|css)$/i;
 
 /**
- * Internal method/process docs and automation scripts — never shipped as site
- * copy, so the AI-tell house style (which uses em-dashes deliberately,
- * throughout this codebase's own comments and docs) doesn't apply. Excluded
- * only from the automatic staged-commit lint; still lintable by passing the
- * path explicitly (`ai-tell-lint.ts docs/conventions.md`). Also covers this
- * file itself, which inherently contains its own pattern strings as literal
- * data and would otherwise always self-trip.
+ * Internal method/process docs, automation scripts, and IDP-scaffold
+ * internals — never shipped as site copy, so the AI-tell house style (which
+ * uses em-dashes deliberately, throughout this codebase's own comments and
+ * docs) doesn't apply. Excluded only from the automatic staged-commit lint;
+ * still lintable by passing the path explicitly
+ * (`ai-tell-lint.ts docs/conventions.md`). Also covers this file itself,
+ * which inherently contains its own pattern strings as literal data and
+ * would otherwise always self-trip.
+ *
+ * `elements/` (whole dir, not just .md), `deploy-readiness.json`,
+ * `lib/integrations/**` (stub-adapter internal error strings, not user-facing
+ * copy), and `tests/**` (fixture strings) were added after a real incident:
+ * the very first commit of a freshly-cloned site stages the ENTIRE inherited
+ * IDP scaffold at once, including this content, and every prior site's first
+ * commit had happened to land before its pre-commit hook was active --
+ * two sites that set up the hook first hit this immediately. See
+ * docs/runbooks (fleet git-safety pass) for the two real repos this broke.
  */
 const INTERNAL_DOC =
-  /(^|\/)(docs\/|tooling\/|README\.md$|CLAUDE\.md$|CLAUDE\.md\.template$|BACKLOG\.md$|CHANGELOG\.md$|SETUP\.md$|\.claude\/|elements\/.*\.md$)/i;
+  /(^|\/)(docs\/|tooling\/|elements\/|README\.md$|CLAUDE\.md$|CLAUDE\.md\.template$|BACKLOG\.md$|CHANGELOG\.md$|SETUP\.md$|\.claude\/|template\/deploy-readiness\.json$|template\/lib\/integrations\/|template\/tests\/)/i;
 
 function main() {
   let files = process.argv.slice(2);
