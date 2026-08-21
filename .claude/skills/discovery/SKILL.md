@@ -23,6 +23,7 @@ These set everything downstream. Always ask, in roughly this order:
 - **The one action = success.** What single thing must a visitor do? (enquiry / book / buy / read / subscribe). The site is built around this.
 - **Verifiable claims.** Which results / testimonials / credentials / images can you show **with evidence + consent**? (Never fabricate — Safety Rail. If it doesn't exist, model it as editable + empty, don't invent it.)
 - **Goal vs ask.** What's the business goal — and does each "I want X" actually serve it?
+- **Existing operational workflow.** For anything that looks like it should be "automated" (notifications, comms, reminders), ask what tool/process is already used for that today — don't assume automation is wanted just because it's buildable. *(Real case: built a full email-adapter module for registrant communications, then reversed it the same day once the client clarified their actual workflow is Outlook mail-merge off an exported CSV — the automation solved a problem that wasn't there, and the dashboard's existing CSV export already served the real need. Ask this before building, not after.)*
 - Constraints: brand assets, languages, budget/timeline tier, who edits content.
 
 ### 3. For specialized briefs, research the subject BEFORE deciding hero craft

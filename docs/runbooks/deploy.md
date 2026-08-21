@@ -20,6 +20,10 @@ Fix every blocker before pushing. `deploy-check` exits non-zero until the per-si
 ## Deploy mechanics checklist
 
 ```
+[ ] `git remote -v` points at THIS site's own dedicated repo, not the shared
+    IDP starter repo or any other site's — confirm before the first push, not
+    after (a site brought in from outside the standard clone flow can still
+    have a leftover `origin` from wherever it came from)
 [ ] Production build passes LOCALLY before pushing
 [ ] Connect repo to host (expect a GitHub/account-link step the first time)
 [ ] Add env keys in the host's settings (NOT in code) — names exactly, secrets as secret

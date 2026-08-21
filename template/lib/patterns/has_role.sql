@@ -34,3 +34,11 @@ grant execute on function public.has_role(text) to authenticated;
 --   create policy "staff read all invoices"
 --     on invoices for select
 --     using ( has_role('staff') );
+--
+-- DON'T STOP AT THE POLICY — every role touching the table also needs a base
+-- GRANT, or it silently sees zero rows regardless of what the policy says
+-- (RLS restricts; GRANT permits; you need both). This has broken two real
+-- builds already (see docs/runbooks/migrations.md rule 5). Self-provisioned
+-- local Supabase does not auto-grant service_role either — say so explicitly:
+--   grant select on invoices to authenticated;
+--   grant select, insert, update on invoices to service_role;

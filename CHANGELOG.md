@@ -74,9 +74,12 @@
 - Extended `docs/modules/adapter-boundary.md` with a general polyglot-boundary principle. Retired the stale "3-skill cap" in `docs/skills-sop.md` / `INDEX.md`.
 - Not yet validated on a real build — tracked in `CLAUDE.md`'s Known gaps.
 
+### First real-build retro ✅
+- Fed real lessons from two site builds (Upasthiti, ICIDS 2026) back into the master. Headline fix: RLS-without-base-table-GRANTs silently broke two builds independently — now documented in the portal golden path, the migrations runbook, and `has_role.sql`'s own example. Plus: a discovery forced-question on existing operational workflows before automating, a `git remote` safety check in the deploy runbook, and a duplicate-form-surfaces gotcha.
+
 ## Status
 
-**Feature-complete per the charter + v5 backlog: Tier-1 MVP + portability + all Tier-2 + hardening + full §7 validation + skills-library expansion.** Pushed to `github.com/PB515/IDP`. Next: validate the new skills on a real site build; the two overlap questions flagged in `CLAUDE.md`'s Known gaps.
+**Feature-complete per the charter + v5 backlog: Tier-1 MVP + portability + all Tier-2 + hardening + full §7 validation + skills-library expansion + first real-build retro.** Pushed to `github.com/PB515/IDP`. Next: validate the new skills on a real site build; the two overlap questions flagged in `CLAUDE.md`'s Known gaps.
 - Slice 4 — Verification / test harness.
 - Slice 5 — Visual layer (tokens + skills + ai-tell-lint).
 

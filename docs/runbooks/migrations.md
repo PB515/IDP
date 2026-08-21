@@ -35,6 +35,16 @@ alter table orders drop column refunded_at;
 2. **`db:check` is a pre-deploy gate.** It catches three drifts: `pending` (a file not applied), `modified` (an applied file was edited), `orphan` (db_meta row with no file). Wire it into CI.
 3. **Changing schema is a frozen-doc change** (Safety Rail 7) — update doc 06 (schema) first, commit separately, then write the migration.
 4. **Test down before you rely on it.** `up` then `down` on the local stack, confirm the table/column state, before trusting a production rollback.
+5. **RLS policies are not the whole access-control story — every table needs base-table GRANTs too.** RLS *restricts* which rows a role can touch; a `GRANT` is what *permits* the role to touch the table at all. Skip the grant and every query from that role silently returns zero rows or fails — no error pointing at the real cause, it just looks like the RLS policy is wrong when it isn't. **This has already independently broken two real site builds**, both times on a table created through this migration runner (not the hosted Supabase dashboard, which grants automatically and hides the gap entirely):
+   - Upasthiti: `audit_log` inserts from the service-role client failed silently for an entire slice of work — migration only granted `authenticated`, not `service_role`. `writeAuditLog()` logs-and-swallows by design, so nothing surfaced until server logs were read directly during browser verification.
+   - ICIDS: the same gap hit twice in one build — once on the initial registrations/submissions tables (Phase 1), again on `user_roles` itself (Phase 3, the table `has_role()` reads from).
+
+   **The fix, every time a migration creates a table any non-owner role touches:** grant explicitly, in the same migration as the `CREATE TABLE` and the RLS policy — don't treat it as a separate step to remember later.
+   ```sql
+   grant select, insert on public.audit_log to authenticated;
+   grant select, insert, update on public.audit_log to service_role;  -- self-provisioned local Supabase does NOT auto-grant this
+   ```
+   If a table should be truly append-only even to `service_role` (a real audit-log pattern, proven on ICIDS), grant only `select, insert` — never `update`/`delete` — to any role, including service-role. That's what makes "append-only" an enforced guarantee instead of a convention someone can accidentally violate.
 
 ## Connection
 
