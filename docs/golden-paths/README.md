@@ -8,6 +8,7 @@
 | [`portal.md`](portal.md) | Accounts + private per-user data | **yes (PART 7)** | Patel CA, Inspire, Purven |
 | [`portfolio.md`](portfolio.md) | Identity-led personal brand, light CMS | optional CMS | Purven |
 | [`marketing.md`](marketing.md) | Inform + convert, lead capture | usually none | Patel CA, Inspire |
+| [`internal-ops.md`](internal-ops.md) | Staff-only ops/CRM, zero external users, replaces a spreadsheet | **yes, staff-only** | garba-arts-admin |
 
 ## How to use a recipe
 
@@ -18,4 +19,4 @@
 
 ## Coverage
 
-These four span the shipped builds. A new type that doesn't fit (e.g. a booking platform, a community) → build it, then add a recipe here from what you learned (the retro → backlog → golden-path loop). Don't pre-write recipes for types no one has built — that's speculative (charter §8).
+These five span the shipped builds. A new type that doesn't fit (e.g. a booking platform, a community) → build it, then add a recipe here from what you learned (the retro → backlog → golden-path loop — `internal-ops.md` is a direct example: it didn't exist until a real build asked for it and said so in its own `CLAUDE.md`). Don't pre-write recipes for types no one has built — that's speculative (charter §8).

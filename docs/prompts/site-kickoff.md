@@ -34,23 +34,31 @@ Set up a new client site using the Website IDP.
    docs/idp-usage-guide.md's model: edit only the master IDP; every site is a
    copy pinned to what it shipped with.
 
-3. Here is my site info: [PASTE YOUR BRIEF/RESEARCH/SPEC HERE, or list file
+3. Read C:\Users\bpurv\OneDrive\Desktop\Website\IDP\docs\runbooks\local-dev-ports.md
+   and assign this site the next unused offset in that registry — edit the new
+   site's supabase/config.toml (project_id + ALL SEVEN ports, not just the API
+   one) accordingly, and add a row to the registry doc (in the IDP, not the
+   site) before the first db:start. Skipping this is exactly how every
+   currently-listed collision happened — two sites' local Supabase stacks both
+   claim the same ports, and whichever started more recently wins, silently.
+
+4. Here is my site info: [PASTE YOUR BRIEF/RESEARCH/SPEC HERE, or list file
    paths for Claude Code to read]
 
-4. Place that info into the new site's docs/ under sensible filenames (e.g.
+5. Place that info into the new site's docs/ under sensible filenames (e.g.
    docs/business-brief.md + docs/deep-research-report.md if it splits cleanly
    that way, or docs/project-spec.md if it's a single combined doc — use
    judgment, don't force a split that doesn't fit).
 
-5. Fill the new site's CLAUDE.md from template/CLAUDE.md.template using ONLY
+6. Fill the new site's CLAUDE.md from template/CLAUDE.md.template using ONLY
    real information from what I gave you. Where something is genuinely
    unresolved, write it as an explicit open item — never invent a placeholder
    and present it as decided.
 
-6. Run `npm run setup` in the new site folder (root + template install, hook
+7. Run `npm run setup` in the new site folder (root + template install, hook
    config, doctor check) and confirm it's green before doing anything else.
 
-7. Then stop and tell me: what type of site this looks like (ecommerce /
+8. Then stop and tell me: what type of site this looks like (ecommerce /
    portal / portfolio / marketing — see docs/golden-paths/), and whether you'd
    recommend running the `discovery` skill first (if the idea is still fuzzy)
    or going straight to docs/doc-gen-master.md (if my info is already concrete
@@ -85,9 +93,16 @@ idea — no docs exist yet.
    CLAUDE.md from template/CLAUDE.md.template using only what we actually
    resolved together — flag anything still open, never invent a placeholder.
 
-4. Run `npm run setup` in the new site folder and confirm it's green.
+4. Read C:\Users\bpurv\OneDrive\Desktop\Website\IDP\docs\runbooks\local-dev-ports.md
+   and assign this site the next unused offset in that registry — edit
+   supabase/config.toml (project_id + ALL SEVEN ports) accordingly, and add a
+   row to the registry doc (in the IDP, not the site) before the first
+   db:start. Skipping this is exactly how every currently-listed collision
+   happened.
 
-5. Then stop and tell me whether the next step should be doc-gen-master's
+5. Run `npm run setup` in the new site folder and confirm it's green.
+
+6. Then stop and tell me whether the next step should be doc-gen-master's
    full doc set, or (if the scope is modest and the auth/data model has any
    real wrinkle) going straight to a focused App PRD + Data Model & Security
    doc before any code — same judgment call as usual. Wait for me.
