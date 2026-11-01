@@ -20,6 +20,8 @@
 | solar-rooftop-simplifier | `solar_rooftop_simplifier` | +400 | 54721 | 54722 | 54723 |
 | gala-awards-2026 | `gala_awards_2026` | +500 | 54821 | 54822 | 54823 |
 | icids-2026 (`antigravity website/`) | `icids_2026` | +600 | 54921 | 54922 | 54923 |
+| bugadi | `bugadi` | +700 | 55021 | 55022 | 55023 |
+| pallav-supply (`P:\Dashboard`) | `pallav_supply` | +800 | 55121 | 55122 | 55123 |
 | garba-arts-admin | `garba_arts_admin` | +1000 (pre-registry) | 55321 | 55322 | 55323 |
 | damini-hunt | `damini_hunt` | +2000 (pre-registry) | 56321 | 56322 | 56323 |
 
