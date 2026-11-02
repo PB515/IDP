@@ -2,7 +2,7 @@
 
 *A base starter repo for producing deployable websites via vibe coding. You **clone it per site**: the generic ~80% (scaffold, patterns, tooling, conventions) is already here; you edit only the per-site ~20% (Brief, brand, tokens, products, business logic).*
 
-This IDP is the distillation of four real, shipped builds — **Bugadi.co** (e-commerce + OMS), the **Purven** portfolio (personal brand + CMS), the **Patel CA** site (marketing + client portal), and **Inspire Academy** (marketing + ops + parent portal) — and their retrospectives. Every component traces to a concrete, repeated pain across those builds.
+This IDP is the distillation of four builds and their retrospectives: three real, shipped sites, **Bugadi.co** (e-commerce + OMS), the **Purven** portfolio (personal brand + CMS) and **Inspire Academy** (marketing + ops + parent portal), plus a **Patel CA** demo site (marketing + client portal) built for a sample client. Every component traces to a concrete, repeated pain across those builds.
 
 It is built using its own method, so it carries its own `CLAUDE.md` and build log like any project it produces.
 
